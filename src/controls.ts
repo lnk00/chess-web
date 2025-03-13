@@ -6,6 +6,6 @@ export function initControls(
   renderer: THREE.WebGPURenderer,
 ) {
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableZoom = false;
-  controls.enablePan = false;
+  controls.enableZoom = true;
+  controls.enablePan = true;
 }

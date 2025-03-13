@@ -1,7 +1,7 @@
 import * as THREE from "three/webgpu";
 
 export function initRenderer(animateCb: () => void) {
-  const renderer = new THREE.WebGPURenderer();
+  const renderer = new THREE.WebGPURenderer({ antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setAnimationLoop(animateCb);
