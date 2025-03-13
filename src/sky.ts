@@ -11,8 +11,8 @@ export function initSky(scene: THREE.Scene) {
   sky.mieCoefficient.value = 0.005;
   sky.mieDirectionalG.value = 0.7;
 
-  const phi = THREE.MathUtils.degToRad(90 - 5);
-  const theta = THREE.MathUtils.degToRad(180);
+  const phi = THREE.MathUtils.degToRad(90 - 50);
+  const theta = THREE.MathUtils.degToRad(315);
 
   sun.setFromSphericalCoords(1, phi, theta);
 
