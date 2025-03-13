@@ -8,8 +8,8 @@ export function initCamera() {
     1000,
   );
 
-  camera.position.z = 15;
-  camera.position.y = 20;
+  camera.position.z = 20;
+  camera.position.y = 40;
 
   return camera;
 }

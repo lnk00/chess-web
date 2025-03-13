@@ -7,6 +7,7 @@ import { initSky } from "./sky";
 import { initLights } from "./lights";
 import { initGround } from "./ground";
 import { initTable } from "./table";
+import { initChess } from "./chess";
 
 let scene: THREE.Scene;
 let camera: THREE.PerspectiveCamera;
@@ -21,6 +22,7 @@ function init() {
   initLights(scene);
   initGround(scene);
   initTable(scene);
+  initChess(scene);
 
   window.addEventListener("resize", onWindowResize);
 }

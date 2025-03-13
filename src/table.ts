@@ -11,9 +11,11 @@ export function initTable(scene: THREE.Scene) {
       gltf.scene.traverse(function (node) {
         if (node) {
           node.castShadow = true;
+          node.receiveShadow = true;
         }
       });
 
+      gltf.scene.scale.set(50, 50, 50);
       scene.add(gltf.scene);
     },
     undefined,
