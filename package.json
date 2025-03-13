@@ -1,0 +1,19 @@
+{
+  "name": "trackmania-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^1.2.16",
+    "@types/three": "^0.174.0",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "three": "^0.174.0"
+  }
+}
