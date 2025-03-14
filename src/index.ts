@@ -15,8 +15,11 @@ let mouseX = 0;
 let mouseY = 0;
 let targetX = 0;
 let targetY = 0;
+let currentLookAtX = 0;
+let currentLookAtY = 0;
 const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
+const dampingFactor = 0.05; // Lower = smoother/slower
 
 function init() {
   scene = new THREE.Scene();
@@ -35,7 +38,11 @@ function init() {
 function animate() {
   targetX = mouseX * 2;
   targetY = mouseY * -5;
-  const targetPoint = new THREE.Vector3(targetX, targetY + 10, 0);
+
+  currentLookAtX += (targetX - currentLookAtX) * dampingFactor;
+  currentLookAtY += (targetY - currentLookAtY) * dampingFactor;
+
+  const targetPoint = new THREE.Vector3(currentLookAtX, currentLookAtY + 10, 0);
   camera.lookAt(targetPoint);
 
   renderer.render(scene, camera);
