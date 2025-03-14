@@ -1,7 +1,6 @@
 import "./index.css";
 import * as THREE from "three/webgpu";
 import { initRenderer } from "./renderer";
-import { initControls } from "./controls";
 import { initCamera } from "./camera";
 import { initSky } from "./sky";
 import { initLights } from "./lights";
@@ -17,7 +16,6 @@ function init() {
   scene = new THREE.Scene();
   camera = initCamera();
   renderer = initRenderer(animate);
-  initControls(camera, renderer);
   initSky(scene);
   initLights(scene);
   initGround(scene);
@@ -25,6 +23,7 @@ function init() {
   initChess(scene);
 
   window.addEventListener("resize", onWindowResize);
+  window.addEventListener("mousemove", onMouseMove);
 }
 
 function animate() {
@@ -36,6 +35,10 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
 
   renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function onMouseMove(e: MouseEvent) {
+  console.log(e);
 }
 
 init();

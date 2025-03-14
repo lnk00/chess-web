@@ -8,8 +8,9 @@ export function initCamera() {
     1000,
   );
 
-  camera.position.z = 20;
-  camera.position.y = 40;
+  camera.position.z = 12;
+  camera.position.y = 43;
+  camera.lookAt(new THREE.Vector3(0, 30, 0));
 
   return camera;
 }
