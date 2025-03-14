@@ -10,6 +10,7 @@ export function initChess(scene: THREE.Scene) {
     function (gltf) {
       gltf.scene.traverse(function (node) {
         if (node) {
+          console.log(node);
           node.castShadow = true;
           node.receiveShadow = true;
         }
