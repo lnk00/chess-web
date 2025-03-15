@@ -7,5 +7,8 @@ export function initControls(
 ) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableZoom = true;
-  controls.enablePan = true;
+  controls.enablePan = false;
+  controls.disconnect();
+
+  return controls;
 }
