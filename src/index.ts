@@ -4,7 +4,6 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
 import { initRenderer } from "./renderer";
 import { initCamera, updateCamera } from "./camera";
 import { initSky } from "./sky";
-import { initLights } from "./lights";
 import { initGround } from "./ground";
 import { initTable } from "./table";
 import { initChess } from "./chess";
@@ -24,7 +23,6 @@ function init() {
   gui = new GUI();
 
   initSky(scene, gui);
-  initLights(scene);
   initGround(scene);
   initTable(scene);
   initChess(scene);
