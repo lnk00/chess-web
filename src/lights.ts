@@ -23,7 +23,7 @@ export function initLights(scene: THREE.Scene) {
   dirLight.shadow.mapSize.width = 2048;
   dirLight.shadow.mapSize.height = 2048;
   dirLight.shadow.bias = -0.002;
-  dirLight.shadow.radius = 4;
+  dirLight.shadow.radius = 1.5;
 
   const d = 50;
 
