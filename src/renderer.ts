@@ -8,6 +8,7 @@ export function initRenderer(animateCb: () => void) {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 0.5;
   renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   document.body.appendChild(renderer.domElement);
 

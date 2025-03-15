@@ -18,22 +18,18 @@ export function initLights(scene: THREE.Scene) {
 
   dirLight.castShadow = true;
 
-  dirLight.shadow.camera.near = 8;
-  dirLight.shadow.camera.far = 200;
+  dirLight.shadow.camera.near = 0;
   dirLight.shadow.mapSize.width = 2048;
   dirLight.shadow.mapSize.height = 2048;
-  dirLight.shadow.bias = -0.002;
+  dirLight.shadow.camera.far = 3500;
+  dirLight.shadow.bias = -0.0001;
   dirLight.shadow.radius = 1.5;
 
   const d = 50;
-
   dirLight.shadow.camera.left = -d;
   dirLight.shadow.camera.right = d;
   dirLight.shadow.camera.top = d;
   dirLight.shadow.camera.bottom = -d;
-
-  dirLight.shadow.camera.far = 3500;
-  dirLight.shadow.bias = -0.0001;
 
   const dirLightHelper = new THREE.DirectionalLightHelper(dirLight, 10);
   scene.add(dirLightHelper);
