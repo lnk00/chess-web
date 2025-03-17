@@ -5,10 +5,10 @@ import { initRenderer } from "./renderer";
 import { initCamera, updateCamera } from "./camera";
 import { initSky } from "./sky";
 import { initGround } from "./ground";
-import { initTable } from "./table";
-import { initChess } from "./chess";
 import { initControls } from "./controls";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
+import { initTable } from "./table";
+import { initPawn } from "./pawn";
 
 let scene: THREE.Scene;
 let camera: THREE.PerspectiveCamera;
@@ -26,10 +26,10 @@ function init() {
   controls = initControls(camera, renderer);
   gui = new GUI();
 
-  initSky(scene, gui);
+  initSky(scene, gui, true);
   initGround(scene);
   initTable(scene);
-  initChess(scene);
+  initPawn(scene);
 
   window.addEventListener("resize", onWindowResize);
   window.addEventListener("mousemove", onMouseMove);

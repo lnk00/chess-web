@@ -11,13 +11,13 @@ const controller = {
   rayleigh: 3,
   mieCoefficient: 0.005,
   mieDirectionalG: 0.7,
-  elevation: 30,
-  azimuth: -54,
+  elevation: 42,
+  azimuth: -55,
 };
 
-export function initSky(scene: THREE.Scene, gui: GUI) {
+export function initSky(scene: THREE.Scene, gui: GUI, helper: boolean = false) {
   sky.scale.setScalar(450000);
-  initSunLight(scene);
+  initSunLight(scene, helper);
 
   gui.add(controller, "turbidity", 0.0, 20.0, 0.1).onChange(guiChanged);
   gui.add(controller, "rayleigh", 0.0, 4, 0.001).onChange(guiChanged);
@@ -30,28 +30,33 @@ export function initSky(scene: THREE.Scene, gui: GUI) {
   scene.add(sky);
 }
 
-function initSunLight(scene: THREE.Scene) {
+function initSunLight(scene: THREE.Scene, helper: boolean = false) {
   sunLight.color.setHSL(0.1, 1, 0.95);
   sunLight.position.copy(sun);
-  sunLight.position.multiplyScalar(30);
+  sunLight.position.multiplyScalar(300);
 
   sunLight.castShadow = true;
-  sunLight.shadow.mapSize.width = 2048;
-  sunLight.shadow.mapSize.height = 2048;
-  sunLight.shadow.camera.far = 5000;
+  sunLight.shadow.mapSize.width = 2048 * 2;
+  sunLight.shadow.mapSize.height = 2048 * 2;
+  sunLight.shadow.camera.far = 4000;
   sunLight.shadow.bias = -0.0001;
   sunLight.shadow.radius = 1;
 
-  const d = 50;
+  const d = 75;
   sunLight.shadow.camera.left = -d;
   sunLight.shadow.camera.right = d;
-  sunLight.shadow.camera.top = d;
-  sunLight.shadow.camera.bottom = -d;
+  sunLight.shadow.camera.top = d * 1.5;
+  sunLight.shadow.camera.bottom = 0;
+
+  if (helper) {
+    const helper = new THREE.CameraHelper(sunLight.shadow.camera);
+    scene.add(helper);
+  }
 
   const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 5);
   hemiLight.color.setHSL(0.6, 1, 0.6);
   hemiLight.groundColor.setHSL(0.095, 1, 0.75);
-  hemiLight.position.set(0, 50, 0);
+  hemiLight.position.set(0, 500, 0);
 
   scene.add(hemiLight);
   scene.add(sunLight);
@@ -68,6 +73,6 @@ function guiChanged() {
   sun.setFromSphericalCoords(1, phi, theta);
 
   sunLight.position.copy(sun);
-  sunLight.position.multiplyScalar(30);
+  sunLight.position.multiplyScalar(300);
   sky.sunPosition.value.copy(sun);
 }

@@ -12,9 +12,9 @@ export function initCamera() {
     1000,
   );
 
-  camera.position.z = 10;
-  camera.position.y = 42;
-  camera.lookAt(new THREE.Vector3(0, 30, 0));
+  camera.position.z = 45;
+  camera.position.y = 120;
+  camera.lookAt(new THREE.Vector3(0, 75, 0));
 
   return camera;
 }
@@ -24,12 +24,12 @@ export function updateCamera(
   mouseY: number,
   camera: THREE.PerspectiveCamera,
 ) {
-  const targetX = mouseX * 1;
+  const targetX = mouseX * 3;
   const targetY = mouseY * -5;
 
   currentLookAtX += (targetX - currentLookAtX) * dampingFactor;
   currentLookAtY += (targetY - currentLookAtY) * dampingFactor;
 
-  const targetPoint = new THREE.Vector3(currentLookAtX, currentLookAtY + 7, 0);
+  const targetPoint = new THREE.Vector3(currentLookAtX, currentLookAtY + 80, 0);
   camera.lookAt(targetPoint);
 }
